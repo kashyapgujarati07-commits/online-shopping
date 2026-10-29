@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ElectroHub - Electronics Store</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+
+
+<header class="header">
+
+    <a href="#home" class="logo">
+        <i class="fa-solid fa-bolt"></i>
+        Electro<span>Hub</span>
+    </a>
+
+    <nav class="navbar" id="navbar">
+
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#trending">Trending</a>
+        <a href="#testing">Testing</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#about">About Us</a>
+    </nav>
+
+    <div class="header-actions">
+
+        <button onclick="openSearch()" class="icon-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <button onclick="openProfile()" class="icon-btn">
+            <i class="fa-regular fa-user"></i>
+        </button>
+
+        <button onclick="openCart()" class="cart-button">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cartCount">0</span>
+        </button>
+
+        <button onclick="toggleMenu()" class="menu-button">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </div>
+
+</header>
+
+
+<div class="search-panel" id="searchPanel">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search electronics..."
+        onkeyup="searchProducts()"
+    >
+
+    <button onclick="closeSearch()">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+
+</div>
+
+
+<section class="hero" id="home">
+
+    <div class="slides">
+
+        <div class="slide active">
+
+            <div class="hero-content">
+
+                <span class="small-title">
+                    NEXT GENERATION TECHNOLOGY
+                </span>
+
+                <h1>
+                    Upgrade Your<br>
+                    Digital Life
+                </h1>
+
+                <p>
+                    Discover the latest electronics,
+                    smart devices and accessories.
+                </p>
+
+                <button onclick="goProducts()">
+                    Shop Electronics
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="slide">
+
+            <div class="hero-content">
+
+                <span class="small-title">
+                    SMART TECHNOLOGY
+                </span>
+
+                <h1>
+                    Technology<br>
+                    Made Simple
+                </h1>
+
+                <p>
+                    Smart watches, headphones,
+                    laptops and more.
+                </p>
+
+                <button onclick="goProducts()">
+                    Explore Products
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="slide">
+
+            <div class="hero-content">
+
+                <span class="small-title">
+                    SPECIAL OFFER
+                </span>
+
+                <h1>
+                    Amazing Deals<br>
+                    On Electronics
+                </h1>
+
+                <p>
+                    Get great products at
+                    attractive prices.
+                </p>
+
+                <button onclick="goProducts()">
+                    View Deals
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <button class="slider-arrow left"
+            onclick="changeSlide(-1)">
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <button class="slider-arrow right"
+            onclick="changeSlide(1)">
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+
+    <div class="slider-dots">
+
+        <span class="dot active"
+              onclick="setSlide(0)"></span>
+
+        <span class="dot"
+              onclick="setSlide(1)"></span>
+
+        <span class="dot"
+              onclick="setSlide(2)"></span>
+
+    </div>
+
+</section>
+
+
+
+<section class="categories">
+
+    <div class="section-heading">
+
+        <span>SHOP BY CATEGORY</span>
+
+        <h2>Explore Electronics</h2>
+
+        <p>
+            Find everything you need for your
+            modern digital lifestyle.
+        </p>
+
+    </div>
+
+
+    <div class="category-grid">
+
+        <div class="category-card"
+             onclick="filterCategory('Laptop')">
+
+            <i class="fa-solid fa-laptop"></i>
+
+            <h3>Laptops</h3>
+
+            <p>Powerful computers</p>
+
+        </div>
+
+
+        <div class="category-card"
+             onclick="filterCategory('Mobile')">
+
+            <i class="fa-solid fa-mobile-screen"></i>
+
+            <h3>Mobiles</h3>
+
+            <p>Latest smartphones</p>
+
+        </div>
+
+
+        <div class="category-card"
+             onclick="filterCategory('Audio')">
+
+            <i class="fa-solid fa-headphones"></i>
+
+            <h3>Audio</h3>
+
+            <p>Headphones & speakers</p>
+
+        </div>
+
+
+        <div class="category-card"
+             onclick="filterCategory('Watch')">
+
+            <i class="fa-solid fa-clock"></i>
+
+            <h3>Smart Watches</h3>
+
+            <p>Smart wearable devices</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+<section class="products-section"
+         id="trending">
+
+    <div class="section-heading">
+
+        <span>TRENDING NOW</span>
+
+        <h2>Popular Electronics</h2>
+
+        <p>
+            Check out the electronics customers
+            are loving right now.
+        </p>
+
+    </div>
+
+    <div class="catalog-tools" aria-label="Product catalog import and export">
+        <div>
+            <h3>Product catalog</h3>
+            <p>Import or export JSON/CSV. CSV columns: id, name, price, category, img. Imports merge by product ID.</p>
+        </div>
+        <div class="catalog-actions">
+            <button type="button" class="catalog-button" onclick="exportProducts('json')">
+                <i class="fa-solid fa-file-export"></i> Export JSON
+            </button>
+            <button type="button" class="catalog-button" onclick="exportProducts('csv')">
+                <i class="fa-solid fa-file-csv"></i> Export CSV
+            </button>
+            <button type="button" class="catalog-button catalog-button-primary" onclick="document.getElementById('productImportInput').click()">
+                <i class="fa-solid fa-file-import"></i> Import products
+            </button>
+            <input type="file" id="productImportInput" accept=".json,.csv,application/json,text/csv" hidden onchange="importProducts(event)">
+        </div>
+        <p class="catalog-status" id="catalogStatus" role="status" aria-live="polite"></p>
+    </div>
+
+    <div
+        id="productContainer"
+        class="product-grid"
+    ></div>
+
+</section>
+
+
+
+
+<section class="testing-section"
+         id="testing">
+
+    <div class="testing-content">
+
+        <span>OUR QUALITY PROMISE</span>
+
+        <h2>
+            Tested For Quality.<br>
+            Built For You.
+        </h2>
+
+        <p>
+            We focus on bringing reliable electronics
+            to our customers. Products are reviewed
+            for quality, features and usability before
+            being featured on our platform.
+        </p>
+
+
+        <div class="testing-features">
+
+            <div>
+                <i class="fa-solid fa-circle-check"></i>
+
+                <div>
+                    <h3>Quality Checked</h3>
+                    <p>Product quality review</p>
+                </div>
+
+            </div>
+
+
+            <div>
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <div>
+                    <h3>Secure Shopping</h3>
+                    <p>Safe shopping experience</p>
+                </div>
+
+            </div>
+
+
+            <div>
+                <i class="fa-solid fa-truck-fast"></i>
+
+                <div>
+                    <h3>Fast Delivery</h3>
+                    <p>Reliable delivery service</p>
+                </div>
+
+            </div>
+
+
+            <div>
+                <i class="fa-solid fa-headset"></i>
+
+                <div>
+                    <h3>Customer Support</h3>
+                    <p>Help when you need it</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="reviews-section"
+         id="reviews">
+
+    <div class="section-heading">
+
+        <span>CUSTOMER REVIEWS</span>
+
+        <h2>What Customers Say</h2>
+
+    </div>
+
+
+    <div class="review-grid">
+
+        <div class="review-card">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                "The headphones I purchased sound
+                excellent and arrived quickly."
+            </p>
+
+            <h3>Arjun Mehta</h3>
+
+            <span>Verified Customer</span>
+
+        </div>
+
+
+        <div class="review-card">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                "Very easy website and good selection
+                of electronics."
+            </p>
+
+            <h3>Neha Patel</h3>
+
+            <span>Verified Customer</span>
+
+        </div>
+
+
+        <div class="review-card">
+
+            <div class="stars">
+                ★★★★☆
+            </div>
+
+            <p>
+                "I liked the product information and
+                the shopping experience."
+            </p>
+
+            <h3>Rohan Shah</h3>
+
+            <span>Verified Customer</span>
+
+        </div>
+
+    </div>
+
+
+ 
+
+    <div class="comment-form">
+
+        <h3>Write Your Comment</h3>
+
+        <input
+            type="text"
+            id="commentName"
+            placeholder="Your Name"
+        >
+
+        <textarea
+            id="commentText"
+            placeholder="Write your experience..."
+        ></textarea>
+
+        <button onclick="addComment()">
+            Submit Comment
+        </button>
+
+    </div>
+
+
+    <div id="commentsList"></div>
+
+</section>
+
+
+
+
+<section class="about-section"
+         id="about">
+
+    <div class="about-image">
+
+        <i class="fa-solid fa-microchip"></i>
+
+    </div>
+
+
+    <div class="about-content">
+
+        <span>ABOUT ELECTROHUB</span>
+
+        <h2>
+            Technology For Your Everyday Life
+        </h2>
+
+        <p>
+            ElectroHub is an electronics shopping
+            platform designed to make discovering
+            modern technology easier.
+        </p>
+
+        <p>
+            From smartphones and laptops to audio
+            products and smart watches, our goal is
+            to provide useful products with clear
+            information and a simple shopping
+            experience.
+        </p>
+
+        <button onclick="goProducts()">
+            Explore Products
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<section class="newsletter">
+
+    <div class="newsletter-content">
+
+        <span>STAY CONNECTED</span>
+
+        <h2>
+            Subscribe For Latest Updates
+        </h2>
+
+        <p>
+            Get new product announcements,
+            electronics deals and updates.
+        </p>
+
+
+        <form onsubmit="subscribe(event)">
+
+            <input
+                type="text"
+                id="subscriberName"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="email"
+                id="subscriberEmail"
+                placeholder="Your Email"
+                required
+            >
+
+            <button type="submit">
+                Subscribe
+            </button>
+
+        </form>
+
+
+        <div id="subscribeMessage"></div>
+
+    </div>
+
+</section>
+
+
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+
+            <a href="#home" class="logo">
+                <i class="fa-solid fa-bolt"></i>
+                Electro<span>Hub</span>
+            </a>
+
+            <p>
+                Your destination for modern electronics,
+                smart devices and digital accessories.
+            </p>
+
+            <div class="social-icons">
+
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Quick Links</h3>
+
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#trending">Trending</a>
+            <a href="#testing">Testing</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Customer</h3>
+
+            <a href="#">My Account</a>
+            <a href="#">My Orders</a>
+            <a href="#">Shipping</a>
+            <a href="#">Returns</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Contact Us</h3>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                support@electrohub.com
+            </p>
+
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                +91 98765 43210
+            </p>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                India
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        <p>
+            © 2026 ElectroHub. All Rights Reserved.
+        </p>
+
+        <p>
+            Electronics Online Store
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+
+<div class="modal" id="profileModal">
+
+    <div class="modal-box">
+
+        <button
+            class="close"
+            onclick="closeProfile()"
+        >
+            ×
+        </button>
+
+        <div class="profile-icon">
+            <i class="fa-regular fa-user"></i>
+        </div>
+
+        <h2>My Profile</h2>
+
+        <input
+            type="email"
+            placeholder="Email"
+        >
+
+        <input
+            type="password"
+            placeholder="Password"
+        >
+
+        <button class="modal-button">
+            Login
+        </button>
+
+        <p>
+            New customer?
+            <a href="#">Create Account</a>
+        </p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="modal" id="cartModal">
+
+    <div class="cart-box">
+
+        <button
+            class="close"
+            onclick="closeCart()"
+        >
+            ×
+        </button>
+
+        <h2>Your Cart</h2>
+
+        <div id="cartItems"></div>
+
+        <div class="cart-total">
+
+            Total:
+            ₹<span id="cartTotal">0</span>
+
+        </div>
+
+        <button
+            class="modal-button"
+            onclick="checkout()"
+        >
+            Checkout
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
